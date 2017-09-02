@@ -1,0 +1,52 @@
+<?php
+
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateFavoriteTable extends Migration
+{
+    /**
+     * @var string
+     */
+    protected $favoritesTable;
+
+    /**
+     * CreateFavoriteTable constructor.
+     */
+    public function __construct()
+    {
+        $this->favoritesTable = Config::get('favorite.favorites_table');
+    }
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        // Create table for storing favorites
+        Schema::create($this->favoritesTable, function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('favoritable_id');
+            $table->string('favoritable_type');
+            $table->unsignedInteger('user_id')->default(0);
+            $table->string('client_id', 32);
+            $table->timestamps();
+
+            $table->unique(['favoritable_type', 'favoritable_id', 'client_id'], 'type_id_client_id');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists($this->favoritesTable);
+    }
+}

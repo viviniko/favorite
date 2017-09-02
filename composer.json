@@ -1,0 +1,26 @@
+{
+    "name": "viviniko/favorite",
+    "description": "VIVINIKO Favorite Service Provider",
+	"keywords": ["viviniko", "favorite", "laravel"],
+	"homepage": "http://viviniko.com",
+	"license": "MIT",
+	"authors": [
+        {
+            "name": "viviniko",
+            "email": "viviniko.shop@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "viviniko/agent": "dev-master",
+        "viviniko/repository": "dev-master",
+        "viviniko/support": "dev-master"
+    },
+	"autoload": {
+        "psr-0": {
+            "Viviniko\\Favorite": "src"
+        }
+    },
+    "minimum-stability": "dev",
+	"prefer-stable": true
+}
