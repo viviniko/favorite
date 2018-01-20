@@ -29,6 +29,6 @@ class UserEventSubscriber
 	 */
 	public function subscribe($events)
     {
-		$events->listen(Login::class, 'Common\Favorite\Listeners\UserEventSubscriber@onLogin');
+		$events->listen(Login::class, 'Viviniko\Favorite\Listeners\UserEventSubscriber@onLogin');
 	}
 }

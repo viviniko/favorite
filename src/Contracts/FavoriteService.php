@@ -4,9 +4,30 @@ namespace Viviniko\Favorite\Contracts;
 
 interface FavoriteService
 {
-    public function add($favoritable);
+    /**
+     * @param $favoritable
+     * @param $user
+     * @return bool
+     */
+    public function isUserFavorite($favoritable, $user = null);
 
-    public function remove($favoritable);
+    /**
+     * @param $favoritable
+     * @return mixed
+     */
+    public function addUserFavoritable($favoritable);
+
+    /**
+     * @param $favoritable
+     * @return mixed
+     */
+    public function removeUserFavoritable($favoritable);
+
+    /**
+     * @param $favoritable
+     * @return int
+     */
+    public function count($favoritable);
 
     /**
      * Paginate favorites.
