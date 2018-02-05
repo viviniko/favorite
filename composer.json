@@ -21,6 +21,13 @@
             "Viviniko\\Favorite": "src"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Viviniko\\Favorite\\FavoriteServiceProvider"
+            ]
+        }
+    },
     "minimum-stability": "dev",
 	"prefer-stable": true
 }
