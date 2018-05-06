@@ -19,11 +19,12 @@ interface UserFavoriteService
      * Paginate the given query into a simple paginator.
      *
      * @param $perPage
+     * @param null $filter
      * @param null $order
      *
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function paginate($perPage, $order = null);
+    public function paginate($perPage, $filter = null, $order = null);
 
     /**
      * @param $favoritable

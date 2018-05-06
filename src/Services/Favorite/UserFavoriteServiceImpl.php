@@ -39,11 +39,16 @@ class UserFavoriteServiceImpl implements UserFavoriteServiceInterface
     /**
      * {@inheritdoc}
      */
-    public function paginate($perPage, $order = null)
+    public function paginate($perPage, $filter = null, $order = null)
     {
         $this->checkIssetUser();
 
-        return $this->favoriteRepository->paginate($perPage, 'search', ['user_id' => $this->getUserKey()], $order);
+        return $this->favoriteRepository->paginate(
+            $perPage,
+            'search',
+            array_merge(['user_id' => $this->getUserKey()], is_array($filter) ? $filter : []),
+            $order
+        );
     }
 
     /**
