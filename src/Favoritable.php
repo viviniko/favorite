@@ -2,7 +2,7 @@
 
 namespace Viviniko\Favorite;
 
-use Viviniko\Agent\Facades\Agent;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 
 trait Favoritable
@@ -14,6 +14,6 @@ trait Favoritable
 
     public function getIsFavoriteAttribute()
     {
-        return $this->favorites()->where('client_id', Agent::clientId())->exists();
+        return Auth::check() && $this->favorites()->where('user_id', Auth::id())->exists();
     }
 }

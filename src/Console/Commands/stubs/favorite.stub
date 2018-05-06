@@ -32,11 +32,10 @@ class CreateFavoriteTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('favoritable_id');
             $table->string('favoritable_type');
-            $table->unsignedInteger('user_id')->default(0);
-            $table->string('client_id', 32);
+            $table->unsignedInteger('user_id');
             $table->timestamps();
 
-            $table->unique(['favoritable_type', 'favoritable_id', 'client_id'], 'type_id_client_id');
+            $table->unique(['favoritable_type', 'favoritable_id', 'user_id'], 'favorites_unique_type_id_user_id');
         });
     }
 

@@ -9,7 +9,7 @@ class Favorite extends Model
     protected $tableConfigKey = 'favorite.favorites_table';
 
     protected $fillable = [
-        'favoritable_type', 'favoritable_id', 'user_id', 'client_id'
+        'favoritable_type', 'favoritable_id', 'user_id'
     ];
 
     /**

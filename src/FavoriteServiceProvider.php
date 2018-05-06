@@ -39,6 +39,8 @@ class FavoriteServiceProvider extends BaseServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/favorite.php', 'favorite');
 
+        $this->registerRepositories();
+
         $this->registerFavoriteService();
 
         $this->registerCommands();
@@ -56,6 +58,14 @@ class FavoriteServiceProvider extends BaseServiceProvider
         });
     }
 
+    protected function registerRepositories()
+    {
+        $this->app->singleton(
+            \Viviniko\Favorite\Repositories\FavoriteRepository::class,
+            \Viviniko\Favorite\Repositories\EloquentFavorite::class
+        );
+    }
+
     /**
      * Register the favorite service provider.
      *
@@ -64,8 +74,8 @@ class FavoriteServiceProvider extends BaseServiceProvider
     protected function registerFavoriteService()
     {
         $this->app->singleton(
-            \Viviniko\Favorite\Contracts\FavoriteService::class,
-            \Viviniko\Favorite\Services\Favorite\EloquentFavorite::class
+            \Viviniko\Favorite\Contracts\UserFavoriteService::class,
+            \Viviniko\Favorite\Services\Favorite\UserFavoriteServiceImpl::class
         );
     }
 
@@ -77,7 +87,7 @@ class FavoriteServiceProvider extends BaseServiceProvider
     public function provides()
     {
         return [
-            \Viviniko\Favorite\Contracts\FavoriteService::class
+            \Viviniko\Favorite\Contracts\UserFavoriteService::class
         ];
     }
 }
