@@ -1,6 +1,6 @@
 <?php
 
-namespace Viviniko\Favorite\Contracts;
+namespace Viviniko\Favorite\Services;
 
 interface FavoriteService
 {

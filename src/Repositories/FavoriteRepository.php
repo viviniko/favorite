@@ -47,6 +47,6 @@ interface FavoriteRepository
      * @param array $attributes
      * @return int
      */
-    public function countBy(array $attributes);
+    public function count($attributes);
 
 }

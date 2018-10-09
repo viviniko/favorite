@@ -2,21 +2,17 @@
 
 namespace Viviniko\Favorite\Repositories;
 
-use Viviniko\Repository\SimpleRepository;
+use Illuminate\Support\Facades\Config;
+use Viviniko\Repository\EloquentRepository;
 
-class EloquentFavorite extends SimpleRepository implements FavoriteRepository
+class EloquentFavorite extends EloquentRepository implements FavoriteRepository
 {
-    protected $modelConfigKey = 'favorite.favorite';
-
-    protected $fieldSearchable = [
+    protected $searchRules = [
         'user_id',
     ];
 
-    /**
-     * {@inheritdoc}
-     */
-    public function countBy(array $attributes)
+    public function __construct()
     {
-        return $this->createModel()->newQuery()->where($attributes)->count();
+        parent::__construct(Config::get('favorite.favorite'));
     }
 }

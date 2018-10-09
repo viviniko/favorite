@@ -1,13 +1,13 @@
 <?php
 
-namespace Viviniko\Favorite\Services\Favorite;
+namespace Viviniko\Favorite\Services\Impl;
 
-use Viviniko\Favorite\Contracts\UserFavoriteService as UserFavoriteServiceInterface;
+use Viviniko\Favorite\Services\UserFavoriteService;
 use Viviniko\Favorite\Repositories\FavoriteRepository;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 
-class UserFavoriteServiceImpl implements UserFavoriteServiceInterface
+class UserFavoriteServiceImpl implements UserFavoriteService
 {
     protected $favoriteRepository;
 

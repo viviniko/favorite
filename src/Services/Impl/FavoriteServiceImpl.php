@@ -1,11 +1,11 @@
 <?php
 
-namespace Viviniko\Favorite\Services\Favorite;
+namespace Viviniko\Favorite\Services\Impl;
 
-use Viviniko\Favorite\Contracts\FavoriteService as FavoriteServiceInterface;
+use Viviniko\Favorite\Services\FavoriteService;
 use Viviniko\Favorite\Repositories\FavoriteRepository;
 
-class FavoriteServiceImpl implements FavoriteServiceInterface
+class FavoriteServiceImpl implements FavoriteService
 {
     protected $favoriteRepository;
 
@@ -19,7 +19,7 @@ class FavoriteServiceImpl implements FavoriteServiceInterface
      */
     public function count($favoritable)
     {
-        return $this->favoriteRepository->countBy([
+        return $this->favoriteRepository->count([
             'favoritable_type' => $favoritable->getMorphClass(),
             'favoritable_id' => $favoritable->id,
         ]);
