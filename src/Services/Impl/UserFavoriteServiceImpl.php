@@ -6,6 +6,7 @@ use Viviniko\Favorite\Services\UserFavoriteService;
 use Viviniko\Favorite\Repositories\FavoriteRepository;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
+use Viviniko\Repository\SearchPageRequest;
 
 class UserFavoriteServiceImpl implements UserFavoriteService
 {
@@ -39,15 +40,16 @@ class UserFavoriteServiceImpl implements UserFavoriteService
     /**
      * {@inheritdoc}
      */
-    public function paginate($perPage, $filter = null, $order = null)
+    public function paginate($perPage, $wheres = [], $orders = [])
     {
         $this->checkIssetUser();
 
-        return $this->favoriteRepository->paginate(
-            $perPage,
-            'search',
-            array_merge(['user_id' => $this->getUserKey()], is_array($filter) ? $filter : []),
-            $order
+        return $this->favoriteRepository->search(
+            SearchPageRequest::create(
+                $perPage,
+                array_merge(['user_id' => $this->getUserKey()], is_array($wheres) ? $wheres : []),
+                $orders
+            )
         );
     }
 
