@@ -122,7 +122,7 @@ class UserFavoriteServiceImpl implements UserFavoriteService
     {
         $this->checkIssetUser();
 
-        return $this->favoriteRepository->countBy(['user_id' => $this->getUserKey()]);
+        return $this->favoriteRepository->count(['user_id' => $this->getUserKey()]);
     }
 
     protected function clearFavoriteCache($favoritable)
