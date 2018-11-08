@@ -12,7 +12,6 @@
     ],
     "require": {
         "php": ">=7.0",
-        "viviniko/agent": "dev-master",
         "viviniko/repository": "dev-master",
         "viviniko/support": "dev-master"
     },
