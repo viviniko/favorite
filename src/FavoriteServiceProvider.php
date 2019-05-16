@@ -74,11 +74,6 @@ class FavoriteServiceProvider extends BaseServiceProvider
     protected function registerFavoriteService()
     {
         $this->app->singleton(
-            \Viviniko\Favorite\Services\FavoriteService::class,
-            \Viviniko\Favorite\Services\Impl\FavoriteServiceImpl::class
-        );
-
-        $this->app->singleton(
             \Viviniko\Favorite\Services\UserFavoriteService::class,
             \Viviniko\Favorite\Services\Impl\UserFavoriteServiceImpl::class
         );
@@ -92,7 +87,6 @@ class FavoriteServiceProvider extends BaseServiceProvider
     public function provides()
     {
         return [
-            \Viviniko\Favorite\Services\FavoriteService::class,
             \Viviniko\Favorite\Services\UserFavoriteService::class
         ];
     }

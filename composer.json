@@ -24,7 +24,10 @@
         "laravel": {
             "providers": [
                 "Viviniko\\Favorite\\FavoriteServiceProvider"
-            ]
+            ],
+            "aliases": {
+              "Files": "Viviniko\\Favorite\\Facades\\Favorites"
+            }
         }
     },
     "minimum-stability": "dev",
