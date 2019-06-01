@@ -41,8 +41,6 @@ class FavoriteServiceProvider extends BaseServiceProvider
 
         $this->registerRepositories();
 
-        $this->registerFavoriteService();
-
         $this->registerCommands();
     }
 
@@ -67,19 +65,6 @@ class FavoriteServiceProvider extends BaseServiceProvider
     }
 
     /**
-     * Register the favorite service provider.
-     *
-     * @return void
-     */
-    protected function registerFavoriteService()
-    {
-        $this->app->singleton(
-            \Viviniko\Favorite\Services\UserFavoriteService::class,
-            \Viviniko\Favorite\Services\Impl\UserFavoriteServiceImpl::class
-        );
-    }
-
-    /**
      * Get the services provided by the provider.
      *
      * @return array
@@ -87,7 +72,7 @@ class FavoriteServiceProvider extends BaseServiceProvider
     public function provides()
     {
         return [
-            \Viviniko\Favorite\Services\UserFavoriteService::class
+            //
         ];
     }
 }
