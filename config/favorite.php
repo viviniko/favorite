@@ -19,5 +19,5 @@ return [
     | This is the favorites table.
     |
     */
-    'favorites_table' => 'favorite_favorites',
+    'favorites_table' => 'favorites',
 ];
