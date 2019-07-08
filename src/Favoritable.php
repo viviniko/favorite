@@ -17,6 +17,11 @@ trait Favoritable
         return $this->favorites()->where('user_id', $userId)->exists();
     }
 
+    public function countFavoriteBy($userId)
+    {
+        return $this->favorites()->where('user_id', $userId)->count();
+    }
+
     public function getIsFavoriteAttribute()
     {
         return Auth::check() && $this->isFavorite(Auth::id());
