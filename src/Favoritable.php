@@ -7,28 +7,23 @@ use Illuminate\Support\Facades\Config;
 
 trait Favoritable
 {
-    public function favorites()
+    public function favoritors()
     {
         return $this->morphMany(Config::get('favorite.favorite'), 'favoritable');
     }
 
-    public function isFavorite($userId)
+    public function isFavoriteBy($userId)
     {
-        return $this->favorites()->where('user_id', $userId)->exists();
-    }
-
-    public function getIsFavoriteAttribute()
-    {
-        return Auth::check() && $this->isFavorite(Auth::id());
+        return $this->favoritors()->where('user_id', $userId)->exists();
     }
 
     public function favoriteBy($userId)
     {
-        $this->favorites()->attach($userId);
+        $this->favoritors()->attach($userId);
     }
 
     public function unfavoriteBy($userId)
     {
-        $this->favorites()->detach($userId);
+        $this->favoritors()->detach($userId);
     }
 }

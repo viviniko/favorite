@@ -11,6 +11,11 @@ trait Favoritor
         return $this->hasMany(Config::get('favorite.favorite'), 'user_id');
     }
 
+    public function isFavorite($favoritable)
+    {
+        return $favoritable->isFavoriteBy($this->id);
+    }
+
     public function favorite($favoritable)
     {
         $favoritable->favoriteBy($this->id);
