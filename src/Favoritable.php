@@ -19,11 +19,11 @@ trait Favoritable
 
     public function favoriteBy($userId)
     {
-        $this->favoritors()->attach($userId);
+        $this->favoritors()->firstOrCreate(['user_id' => $userId]);
     }
 
     public function unfavoriteBy($userId)
     {
-        $this->favoritors()->detach($userId);
+        $this->favoritors()->where('user_id', $userId)->delete();
     }
 }

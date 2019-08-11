@@ -18,15 +18,15 @@ trait Favoritor
 
     public function favorite($favoritable)
     {
-        if (!$this->isFavorite($favoritable))
-            $favoritable->favoriteBy($this->id);
+        $favoritable->favoriteBy($this->id);
+
         return $this;
     }
 
     public function unfavorite($favoritable)
     {
-        if ($this->isFavorite($favoritable))
-            $favoritable->unfavoriteBy($this->id);
+        $favoritable->unfavoriteBy($this->id);
+
         return $this;
     }
 }
